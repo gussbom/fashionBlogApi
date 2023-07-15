@@ -1,4 +1,10 @@
 package com.gusso.fashionblog_api.dto.request;
 
-public class CommentsRequestDto {
+import lombok.Data;
+
+@Data
+public class CommentRequestDto {
+
+    private String postTitle;
+    private String comment;
 }

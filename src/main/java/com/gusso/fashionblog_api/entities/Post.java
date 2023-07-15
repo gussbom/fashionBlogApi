@@ -1,10 +1,11 @@
 package com.gusso.fashionblog_api.entities;
 
 
-import com.gusso.fashionblog_api.enums.DesignCategories;
+import com.gusso.fashionblog_api.enums.DesignCategory;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,20 +15,26 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Builder
-public class Posts extends BaseEntity {
+@Table(name="postTable")
+public class Post extends BaseEntity implements Serializable {
 
-    @Column(length = 25, nullable = false)
-    private String imageUrl;
+    @Column(unique = true, nullable = false)
+    private String title;
 
-    private DesignCategories designCategory;
+    @Column
+    private String description;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private DesignCategory designCategory;
 
     @ManyToOne
-    @JoinColumn(name = "Admin_id")
-    private Administrator administrator;
+    @JoinColumn(name = "username", referencedColumnName = "username")
+    private User user;
 
-    @OneToMany(mappedBy = "posts", cascade = CascadeType.ALL)
-    private List<Comments> comments = new ArrayList<>();
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Comment> comment = new ArrayList<>();
 
-    @OneToMany(mappedBy = "posts", cascade = CascadeType.ALL)
-    private List<Likes> likes = new ArrayList<>();
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<UserEngagement> userEngagement = new ArrayList<>();
 }

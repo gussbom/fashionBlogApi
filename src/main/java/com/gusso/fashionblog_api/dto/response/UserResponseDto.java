@@ -1,4 +1,14 @@
 package com.gusso.fashionblog_api.dto.response;
 
-public class AdminResponseDto {
+import lombok.*;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class UserResponseDto {
+
+    private String username;
+
 }

@@ -1,2 +1,5 @@
-package com.gusso.fashionblog_api.enums;public enum Role {
+package com.gusso.fashionblog_api.enums;
+
+public enum Role {
+    ADMINISTRATOR, VISITOR
 }

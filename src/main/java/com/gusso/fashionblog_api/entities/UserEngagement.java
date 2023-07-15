@@ -1,13 +1,10 @@
 package com.gusso.fashionblog_api.entities;
 
-
 import com.gusso.fashionblog_api.enums.Reaction;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Getter
 @Setter
@@ -15,20 +12,18 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 @Entity
 @Builder
-public class Like extends BaseEntity {
+@Table(name="userEngagementTable")
+public class UserEngagement extends BaseEntity implements Serializable {
 
     @Column
+    @Enumerated(EnumType.STRING)
     private Reaction reaction;
 
     @ManyToOne
-    @JoinColumn(name = "post_id")
+    @JoinColumn(name = "post_title", referencedColumnName = "title")
     private Post post;
 
     @ManyToOne
-    @JoinColumn(name = "comment_id")
-    private Comment comment;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "username", referencedColumnName = "username")
     private User user;
 }

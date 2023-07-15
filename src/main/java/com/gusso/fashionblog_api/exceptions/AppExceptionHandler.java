@@ -1,4 +1,4 @@
-package com.gusso.activitytrackerapp.exceptions;
+package com.gusso.fashionblog_api.exceptions;
 
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;

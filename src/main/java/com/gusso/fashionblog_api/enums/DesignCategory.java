@@ -1,5 +1,5 @@
 package com.gusso.fashionblog_api.enums;
 
-public enum DesignCategories {
+public enum DesignCategory {
     CLOTHING, FOOTWEAR, BAGS, ACCESSORIES
 }
