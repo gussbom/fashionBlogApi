@@ -1,6 +1,7 @@
 package com.gusso.fashionblog_api.entities;
 
 
+import com.gusso.fashionblog_api.enums.DesignCategories;
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,6 +16,11 @@ import java.util.List;
 @Builder
 public class Posts extends BaseEntity {
 
+    @Column(length = 25, nullable = false)
+    private String imageUrl;
+
+    private DesignCategories designCategory;
+
     @ManyToOne
     @JoinColumn(name = "Admin_id")
     private Administrator administrator;
@@ -24,5 +30,4 @@ public class Posts extends BaseEntity {
 
     @OneToMany(mappedBy = "posts", cascade = CascadeType.ALL)
     private List<Likes> likes = new ArrayList<>();
-
 }

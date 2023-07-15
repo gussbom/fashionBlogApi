@@ -1,8 +1,10 @@
 package com.gusso.fashionblog_api.entities;
 
 
+import com.gusso.fashionblog_api.enums.Reaction;
 import lombok.*;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,18 +15,20 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 @Entity
 @Builder
-public class Likes extends BaseEntity {
+public class Like extends BaseEntity {
+
+    @Column
+    private Reaction reaction;
 
     @ManyToOne
     @JoinColumn(name = "post_id")
-    private Posts posts;
+    private Post post;
 
     @ManyToOne
-    @JoinColumn(name = "comments_id")
-    private Comments comments;
+    @JoinColumn(name = "comment_id")
+    private Comment comment;
 
     @ManyToOne
-    @JoinColumn(name = "visitor_id")
-    private Visitor visitor;
-
+    @JoinColumn(name = "user_id")
+    private User user;
 }
