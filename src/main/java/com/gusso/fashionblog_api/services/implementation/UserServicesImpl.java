@@ -40,7 +40,7 @@ public class UserServicesImpl implements UserServices {
         user.setPassword(request.getPassword());
         User newUser = userRepository.save(user);
 
-        return Mapper.createNewUser(newUser);
+        return Mapper.userResponse(newUser);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class UserServicesImpl implements UserServices {
 
         if(user.isPresent()){
             httpSession.setAttribute("username", request.getUsername());
-            return Mapper.loginUser(user.get());
+            return Mapper.userResponse(user.get());
         }
         throw new CustomExceptions("User does not exists", HttpStatus.NOT_FOUND);
     }

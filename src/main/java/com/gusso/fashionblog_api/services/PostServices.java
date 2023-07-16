@@ -2,6 +2,7 @@ package com.gusso.fashionblog_api.services;
 
 import com.gusso.fashionblog_api.dto.request.PostsRequestDto;
 import com.gusso.fashionblog_api.dto.response.PostsResponseDto;
+import com.gusso.fashionblog_api.entities.Post;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -13,11 +14,11 @@ public interface PostServices {
 
     PostsResponseDto findPostByTitle(PostsRequestDto request);
 
-    List<PostsResponseDto> findAllPosts(PostsRequestDto request);
+    List<PostsResponseDto> findAllPosts(String username);
 
-    List<PostsResponseDto> findAllPostByDesignCategory(PostsRequestDto request);
+    List<PostsResponseDto> findAllPostByDesignCategory(PostsRequestDto request, String username);
 
-    PostsResponseDto editPost(PostsRequestDto request);
+    PostsResponseDto editPostByTitle(PostsRequestDto request, String username);
 
-    PostsResponseDto deletePost(PostsRequestDto request);
+    String deletePostByTitle(PostsRequestDto request, String username);
 }

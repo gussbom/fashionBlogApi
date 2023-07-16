@@ -12,11 +12,9 @@ public interface CommentServices {
 
     CommentResponseDto createComment(CommentRequestDto request, String user);
 
-    List<CommentResponseDto> findAllCommentsByUser(CommentRequestDto request);
-
-    CommentResponseDto findCommentByUsernameAndCommentId(CommentRequestDto request);
-
     List<CommentResponseDto> findAllCommentsByDesignCategory(CommentRequestDto request);
+
+    List<CommentResponseDto> findAllCommentsByPost(CommentRequestDto request);
 
     CommentResponseDto editCommentById(CommentRequestDto request);
 

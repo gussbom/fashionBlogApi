@@ -2,10 +2,7 @@ package com.gusso.fashionblog_api.controllers;
 
 import com.gusso.fashionblog_api.dto.request.PostsRequestDto;
 import com.gusso.fashionblog_api.dto.response.PostsResponseDto;
-import com.gusso.fashionblog_api.services.CommentServices;
 import com.gusso.fashionblog_api.services.PostServices;
-import com.gusso.fashionblog_api.services.UserServices;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +23,32 @@ public class PostsController {
     @PostMapping(path="/createPost")
     public ResponseEntity<PostsResponseDto> createPost(@RequestBody PostsRequestDto request) {
         return ResponseEntity.ok(postServices.createPost(request, (String) session.getAttribute("username")));
+    }
+
+    @DeleteMapping(path="/deletePost")
+    ResponseEntity<?> deletePost(@RequestBody PostsRequestDto request){
+        return ResponseEntity.ok(postServices.deletePostByTitle(request, (String)session.getAttribute("username")));
+    }
+
+    @PostMapping(path="/findPostByTitle")
+    ResponseEntity<?> findPostByTitle(@RequestBody PostsRequestDto request){
+        return ResponseEntity.ok(postServices.findPostByTitle(request));
+    }
+
+    @PostMapping(path="/findAllPosts")
+    ResponseEntity<?> findAllPost(){
+        String username = (String) session.getAttribute("username");
+        return ResponseEntity.ok(postServices.findAllPosts(username));
+    }
+
+    @PostMapping(path="/findAllPostsByDesignCategory")
+    ResponseEntity<?> findAllPostsByDesignCategory(@RequestBody PostsRequestDto request){
+        return ResponseEntity.ok(postServices.findAllPostByDesignCategory(request, (String)session.getAttribute("username")));
+    }
+
+    @PatchMapping(path="/editPostByTitle")
+    ResponseEntity<?> editPostByTitle(@RequestBody PostsRequestDto request){
+        return ResponseEntity.ok(postServices.editPostByTitle(request, (String)session.getAttribute("username")));
     }
 
 //    public ResponseEntity<?> createPost(@RequestBody PostsRequestDto request){

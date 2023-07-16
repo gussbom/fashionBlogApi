@@ -28,7 +28,8 @@ public class UserEngagementServiceImpl implements UserEngagementService {
     private final PostRepository postRepository;
     private final HttpSession session;
 
-    public UserEngagementServiceImpl(UserEngagementRepository userEngagementRepository, UserRepository userRepository, PostRepository postRepository, HttpSession session) {
+    public UserEngagementServiceImpl(UserEngagementRepository userEngagementRepository, UserRepository userRepository,
+                                     PostRepository postRepository, HttpSession session) {
         this.userEngagementRepository = userEngagementRepository;
         this.userRepository = userRepository;
         this.postRepository = postRepository;
@@ -68,6 +69,6 @@ public class UserEngagementServiceImpl implements UserEngagementService {
 
         UserEngagement newEngagement = userEngagementRepository.save(engagement);
 
-        return Mapper.reactToPost(newEngagement);
+        return Mapper.userEngagementResponse(newEngagement);
     }
 }
