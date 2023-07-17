@@ -30,18 +30,18 @@ public class PostsController {
         return ResponseEntity.ok(postServices.deletePostByTitle(request, (String)session.getAttribute("username")));
     }
 
-    @PostMapping(path="/findPostByTitle")
+    @GetMapping(path="/findPostByTitle")
     ResponseEntity<?> findPostByTitle(@RequestBody PostsRequestDto request){
         return ResponseEntity.ok(postServices.findPostByTitle(request));
     }
 
-    @PostMapping(path="/findAllPosts")
+    @GetMapping(path="/findAllPosts")
     ResponseEntity<?> findAllPost(){
         String username = (String) session.getAttribute("username");
         return ResponseEntity.ok(postServices.findAllPosts(username));
     }
 
-    @PostMapping(path="/findAllPostsByDesignCategory")
+    @GetMapping(path="/findAllPostsByDesignCategory")
     ResponseEntity<?> findAllPostsByDesignCategory(@RequestBody PostsRequestDto request){
         return ResponseEntity.ok(postServices.findAllPostByDesignCategory(request, (String)session.getAttribute("username")));
     }

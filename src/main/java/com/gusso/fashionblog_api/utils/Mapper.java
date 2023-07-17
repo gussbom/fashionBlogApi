@@ -27,6 +27,7 @@ public class Mapper {
         return UserEngagementResponseDto.builder()
                 .username(engagement.getUser().getUsername())
                 .postTitle(engagement.getPost().getTitle())
+                .createdAt(engagement.getCreatedAt())
                 .build();
     }
     public static PostsResponseDto postResponse(Post post){

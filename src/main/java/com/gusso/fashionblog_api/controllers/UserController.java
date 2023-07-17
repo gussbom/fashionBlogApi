@@ -9,16 +9,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 @RestController
 @RequestMapping(path="/app")
 public class UserController {
     private final UserServices userServices;
-    private final HttpSession session;
-    public UserController(UserServices userServices, HttpSession session) {
+
+    public UserController(UserServices userServices) {
         this.userServices = userServices;
-        this.session = session;
     }
 
     @PostMapping(path = "/createNewUser")

@@ -6,6 +6,7 @@ import lombok.*;
 import javax.validation.constraints.NotBlank;
 
 @Data
+@Builder
 public class PostsRequestDto {
 
     @NotBlank

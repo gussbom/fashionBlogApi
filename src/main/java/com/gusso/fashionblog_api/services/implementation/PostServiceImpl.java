@@ -74,7 +74,7 @@ public class PostServiceImpl implements PostServices {
 
 
         Optional<User> userOptional = userRepository.findByUsername(username);
-        if (!userOptional.isPresent() && userOptional.get().getRole().equals(Role.ADMINISTRATOR)) {
+        if (!(userOptional.isPresent() && userOptional.get().getRole().equals(Role.ADMINISTRATOR)) || userOptional.isEmpty()) {
             throw new CustomExceptions("You're not an Admin", HttpStatus.NOT_FOUND);
         }
 
@@ -97,7 +97,7 @@ public class PostServiceImpl implements PostServices {
 
 
         Optional<User> userOptional = userRepository.findByUsername(username);
-        if (!userOptional.isPresent() && userOptional.get().getRole().equals(Role.ADMINISTRATOR)) {
+        if (!(userOptional.isPresent() && userOptional.get().getRole().equals(Role.ADMINISTRATOR)) || userOptional.isEmpty()) {
             throw new CustomExceptions("You're not an Admin", HttpStatus.NOT_FOUND);
         }
 
@@ -128,6 +128,7 @@ public class PostServiceImpl implements PostServices {
            throw new CustomExceptions("You're not an Admin", HttpStatus.NOT_FOUND);
         }
 
+//       try to Continue with the implementation
         return null;
     }
     @Override

@@ -43,10 +43,12 @@ public class UserEngagementServiceImpl implements UserEngagementService {
         }
 
         Optional<User> user = userRepository.findByUsername(username);
-        Optional<UserEngagement> engagementOptional = userEngagementRepository.findUserEngagementByUser(user.get());
+        if(user.isPresent()){
+            Optional<UserEngagement> engagementOptional = userEngagementRepository.findUserEngagementByUser(user.get());
 
-        if (engagementOptional.isPresent()){
-            throw new CustomExceptions("You have reacted to this post already", HttpStatus.CONFLICT);
+            if (engagementOptional.isPresent()){
+                throw new CustomExceptions("You have reacted to this post already", HttpStatus.BAD_REQUEST);
+            }
         }
 
         User newUser;

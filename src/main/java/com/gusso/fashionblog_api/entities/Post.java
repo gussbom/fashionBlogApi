@@ -24,6 +24,12 @@ public class Post extends BaseEntity implements Serializable {
     @Column
     private String description;
 
+//    @Column
+//    private int likes;
+//
+//    @Column
+//    private int unlikes;
+
     @Column
     @Enumerated(EnumType.STRING)
     private DesignCategory designCategory;
